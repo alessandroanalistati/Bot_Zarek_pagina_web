@@ -1,0 +1,22 @@
+<script>
+	try {
+		if(parseInt('{{code_user}}')>0) {
+			console.log('carregamento ok.')
+		}else {
+			window.location.href = "/home";
+		}
+	}catch(error) {
+		console.log(error)
+		window.location.href = "/home";
+	}
+</script>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Redirecionar</title>
+	<meta http-equiv="refresh" content="0.01; URL='/perguntas/{{code_user}}'"/>
+</head>
+<body>
+
+</body>
+</html>

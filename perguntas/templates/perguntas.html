@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<meta http-equiv='cache-control' content='no-cache'>
+	<meta http-equiv='expires' content='0'>
+	<meta http-equiv='pragma' content='no-cache'>
+	<title>Perguntas</title>
+</head>
+<body>
+	<nav class="navbar navbar-expand-sm bg-dark">
+		<ul class="navbar-nav">
+			<li class="nav-item">
+				<a class="nav-link" href="/home">HOME</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/perguntas/{{code_user}}">Cadastro</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#"
+				onclick="window.open('http://127.0.0.1:8000/perguntas/chatbot/{{code_user}}',
+									 '',
+									 'width=410,height=450')">
+					Chatbot
+				</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/perguntas/novo/{{code_user}}">Novo</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/capturas/{{code_user}}">Capturas</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/perguntas/api/{{code_user}}">API</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/usuarios/login">Sair</a>
+			</li>
+		</ul>
+	</nav>
+	<br>
+	<div class="container">
+		<h2>{{titulo}}</h2>
+		<div style="overflow-y: scroll; height: 410px; width: : 100%;" align="center">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Pergunta</th>
+						<th>OPÇOES</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for pergunta in perguntas %}
+					<tr>
+						<td nowrap="true">{{pergunta.id}}</td>
+						<td nowrap="true">{{pergunta.question}}</td>
+						<td nowrap="true">
+							<a href="/perguntas/edicao/{{pergunta.id}}"
+							class="btn btn-primary" role="button">
+								Editar
+							</a>
+							<a href="/perguntas/delecao/{{pergunta.id}}"
+							class="btn btn-danger" role="button">
+								DELETAR
+							</a>
+						</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+</html>
